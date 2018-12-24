@@ -21,6 +21,8 @@ import satheesh.mobilitytask.base.BaseActivity
 import satheesh.mobilitytask.helper.isInternetConnected
 import satheesh.mobilitytask.location.LocationHelper
 import satheesh.mobilitytask.model.VenuesItem
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class VenuesActivity: BaseActivity<VenuesPresenter>(), VenuesView {
@@ -56,7 +58,14 @@ class VenuesActivity: BaseActivity<VenuesPresenter>(), VenuesView {
             recyclerView.layoutManager = LinearLayoutManager(this)
             recyclerView.setHasFixedSize(true)
             recyclerView.adapter = adapter
-            presenter?.getVenues(latitude, longitude)
+
+            val c = Calendar.getInstance().getTime()
+            println("Current time => $c")
+
+            val df = SimpleDateFormat("yyyyMMdd", Locale.US)
+            val formattedDate = df.format(c)
+
+            presenter?.getVenues(latitude, longitude, formattedDate)
         }else{
             Snackbar.make(lnrRoot, getString(R.string.internet_not_connected), Snackbar.LENGTH_INDEFINITE).show()
         }

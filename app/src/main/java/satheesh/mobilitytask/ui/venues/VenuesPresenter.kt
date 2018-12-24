@@ -13,8 +13,9 @@ class VenuesPresenter(val venuesView: VenuesView): BasePresenter() {
     private val dataManager = DataManager()
 
     @SuppressLint("CheckResult")
-    fun getVenues(latitude: Double, longitude: Double){
-        dataManager.getVenues("$latitude,$longitude", BuildConfig.username, BuildConfig.password, "20181224")
+    fun getVenues(latitude: Double, longitude: Double
+                  , formattedDate: String){
+        dataManager.getVenues("$latitude,$longitude", BuildConfig.username, BuildConfig.password, formattedDate)
                 .subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe{
                     venuesView.refreshVenue(it.response.venues as MutableList<VenuesItem>)
         }
