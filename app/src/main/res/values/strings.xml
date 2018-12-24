@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MobilityTask</string>
+    <string name="search">Search</string>
+    <string name="distance">Distance %1$s meters </string>
+
+    <string name="internet_not_connected">Uh Oh! Internet is not connected on this device.
+        Kindly connect to the network and try again.</string>
+</resources>
